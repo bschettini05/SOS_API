@@ -1,0 +1,55 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+
+# Logs
+*.log
+logs/
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+
+# Publish output
+publish/
+app.publish/
+*.pubxml.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# Environment files and secrets
+.env
+.env.*
+secrets.json
+
+# Local appsettings with real secrets
+appsettings.Development.json
+appsettings.Production.json
