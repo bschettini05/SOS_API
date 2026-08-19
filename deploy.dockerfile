@@ -3,8 +3,8 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore "SOS_API.sln"
-RUN dotnet publish "SOS_API.sln" -c Release -o /app/publish
+RUN dotnet restore "SOS_API/SOS_API.csproj"
+RUN dotnet publish "SOS_API/SOS_API.csproj" -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
