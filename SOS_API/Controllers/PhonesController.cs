@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SOS_API.Data;
+using SOS_API.Models;
 using System.Reflection.Metadata;
 
 namespace SOS_API.Controllers
@@ -40,6 +41,27 @@ namespace SOS_API.Controllers
                     p.PhoneNumber
                 })
                 .ToListAsync();
+
+            return Ok(phones);
+        }
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllPhones()
+        {
+            var phones = await (
+                from phone in _context.Phones.AsNoTracking()
+                join country in _context.Countries.AsNoTracking()
+                    on phone.CountryId equals country.Id
+                orderby country.Name, phone.Category
+                select new
+                {
+                    number = phone.PhoneNumber,
+                    category = phone.Category,
+                    countryName = country.Name,
+                    countryIso2Code = country.Iso2Code,
+                    countryIso3Code = country.Iso3Code,
+                }
+            ).ToListAsync();
 
             return Ok(phones);
         }
